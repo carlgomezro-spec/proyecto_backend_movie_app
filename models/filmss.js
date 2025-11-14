@@ -44,17 +44,18 @@ const objectSchema = {
         type: String,
         required: true,
     },
-    opinionSensacine: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "Sensacine",
-        required: true,
-    },
-    opinionFilmafinitty: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Filmafinitty",
-        required: true,
-    }
-
+    opinions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Sensacine",
+            required: true,
+        },
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Filmafinitty",
+            required: true,
+        }
+    ],
 }
 
 // Crear Esquema
