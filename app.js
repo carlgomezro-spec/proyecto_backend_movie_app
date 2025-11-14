@@ -8,12 +8,12 @@ const port = 3000; // Puerto de pruebas
 require('dotenv').config();
 
 // Middlewares
-const error404 = require("./middlewares/error404");
+// const error404 = require("./middlewares/error404");
 // Morgan
-const morgan = require("./middlewares/morgan");
+// const morgan = require("./middlewares/morgan");
 
 // Configuración del logger con Morgan
-app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
+// app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 
 
 // Habilitar recepción de JSON por mi backend
