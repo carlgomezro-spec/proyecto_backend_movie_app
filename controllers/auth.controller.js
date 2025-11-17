@@ -4,18 +4,20 @@ const User = require("../models/user.model");
 const signup = async (req, res) => {
     console.log(req.body);
     try {
-        const { name, surname, email, password } = req.body;
+        const { name, surname, email, password, role = 'user' } = req.body;
 
         if(!name || !surname || !email || !password) {
+            console.log(name, surname, email, password);
             return res.status(400).json({ message: "Todos los campos son obligatorios"});
         }
 
-        const user = await User.createUser(name, surname, email, password);
-        console.log(user);
-        res.status(201).json({ message: "Usuario creado", user });
+        const user = await User.createUser(name, surname, email, password, role);
+        // res.redirect('/login')
+        // res.status(201).json({ message: "Usuario creado", user });
         
-    } catch (err) {
-        res.status(400).json({ message: 'Algo ha salido mal', err});
+    } catch (error) {
+        console.error('Error en el registro:', error.message);
+        res.status(500).send('Error en el registro');
     }
 }
 
@@ -63,8 +65,9 @@ const logout = async (req, res) => {
 
         return res.status(200).json({ message: "Sesión cerrada correctamente", resultUser });
 
-    } catch(err) {
-        res.status(400).json({ message: 'Algo ha salido mal al deslogarte', err});
+    } catch(error) {
+        console.error('Error en el registro:', error.message);
+        res.status(500).send('Error en el registro');
     }
 }
 
