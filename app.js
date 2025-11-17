@@ -28,6 +28,11 @@ require('dotenv').config();
 // Parsear el body entrante a JSON
 app.use(express.json());
 app.use(express.static('public')); // Para servir archivos estáticos del front CSS, JS, assets
+// http://localhost:3000/
+app.get("/", (request, response) => {
+  //El primer parametro envia petición y el siguiente respustas
+  response.send("Hello World!");
+});
 
 // Y en los middlewares, agrega:
 app.use(cookieParser());

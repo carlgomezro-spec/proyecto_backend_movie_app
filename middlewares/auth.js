@@ -2,9 +2,7 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
-// ===============================
-// 🔹 Middleware: Usuario autenticado
-// ===============================
+// Middleware: Usuario autenticado
 exports.isAuthenticated = async (req, res, next) => {
   try {
     // Buscar token en cookies o header
@@ -30,9 +28,7 @@ exports.isAuthenticated = async (req, res, next) => {
 };
 
 
-// ===============================
-// 🔹 Middleware: Solo Administrador
-// ===============================
+// Middleware: Solo Administrador
 exports.isAdmin = async (req, res, next) => {
   try {
     const token =

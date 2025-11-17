@@ -9,9 +9,8 @@ exports.getMovieByTitle = async (req, res) => {
   const title = req.params.title;
 
   try {
-    // =======================
-    // 1. BUSCAR EN OMDB (fetch)
-    // =======================
+    
+    // 1. Intenta buscar en OMDB(fetch)
     const omdbResponse = await fetch(
       `http://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${OMDB_API_KEY}`
     );
@@ -25,9 +24,7 @@ exports.getMovieByTitle = async (req, res) => {
       });
     }
 
-    // =========================
-    // 2. BUSCAR EN MONGODB
-    // =========================
+    // 2. Si no, intenta buscar en MONGODB
     const movie = await Movie.findOne({
       title: new RegExp("^" + title + "$", "i")
     });
