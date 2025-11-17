@@ -16,6 +16,11 @@ const port = 3000; // Puerto de pruebas
 // Leer fichero .env
 require('dotenv').config();
 
+// Habilitar recepción de JSON por mi backend
+// Parsear el body entrante a JSON
+app.use(express.json());
+app.use(express.static('public')); // Para servir archivos estáticos del front CSS, JS, assets
+
 // Middlewares
 // const error404 = require("./middlewares/error404");
 // Morgan
@@ -23,6 +28,7 @@ require('dotenv').config();
 
 // Configuración del logger con Morgan
 // app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
+
 
 // Habilitar recepción de JSON por mi backend
 // Parsear el body entrante a JSON
