@@ -6,15 +6,13 @@ const {
     addFavorite, 
     removeFavorite 
 } = require('../controllers/favoritesController');
-const { isAuthenticated } = require('../middlewares/authMiddleware'); // ← CORREGIDO
+const { isAuthenticated } = require('../middlewares/auth'); // ← CORREGIDO
 
 const router = express.Router();
 
 //------------- WEB -------------
 // [GET] http://localhost:3000/favorites - Vista de favoritos
-router.
-get('/favorites', authMiddleware, getFavoritesView);
-
+router.get('/favorites', isAuthenticated, getFavoritesView);
 // -------------API--------------
 // [GET] http://localhost:3000/api/favorites - Obtener películas favoritas
 router.get('/api/favorites', isAuthenticated, getFavorites);
