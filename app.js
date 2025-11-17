@@ -9,6 +9,15 @@ const port = 3000; // Puerto de pruebas
 // Leer fichero .env
 require('dotenv').config();
 
+// Habilitar recepción de JSON por mi backend
+// Parsear el body entrante a JSON
+app.use(express.json());
+app.use(express.static('public')); // Para servir archivos estáticos del front CSS, JS, assets
+
+// Rutas
+const authRoutes = require("./routes/authRoutes");
+app.use("/", authRoutes);
+
 // Middlewares
 // const error404 = require("./middlewares/error404");
 // Morgan
@@ -18,10 +27,6 @@ require('dotenv').config();
 // app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 
 
-// Habilitar recepción de JSON por mi backend
-// Parsear el body entrante a JSON
-app.use(express.json());
-app.use(express.static('public')); // Para servir archivos estáticos del front CSS, JS, assets
 
 
 // Iniciar el servidor
