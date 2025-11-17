@@ -1,40 +1,41 @@
-const express = require("express"); // Importando express
+const express = require("express");
 const cowsay = require("cowsay");
 const cookieParser = require('cookie-parser');
 
-
 const connectDB = require("./config/db_mongo");
-const Film = require("./models/films.model");
+const Movie = require("./models/films.model");  
 
-// Importar rutas
-const viewsRoutes = require("./routes/viewsRoutes");
-const favoritesRoutes = require("./routes/favoritesRoutes"); 
+const app = express();
+const port = 3000;
 
-const app = express(); // Creando el servidor
-const port = 3000; // Puerto de pruebas
-
-// Leer fichero .env
 require('dotenv').config();
 
 // Middlewares
-// const error404 = require("./middlewares/error404");
-// Morgan
-// const morgan = require("./middlewares/morgan");
-
-// Configuración del logger con Morgan
-// app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
-
-// Habilitar recepción de JSON por mi backend
-// Parsear el body entrante a JSON
-app.use(express.json());
-app.use(express.static('public')); // Para servir archivos estáticos del front CSS, JS, assets
-
-// Y en los middlewares, agrega:
 app.use(cookieParser());
+const error404 = require("./middlewares/error404");
+const morgan = require("./middlewares/morgan");
+app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 
-// Usar rutas
+// Configuración PUG
+app.set('view engine', 'pug');
+app.set('views','./views');
+
+app.use(express.json());
+app.use(express.static('public'));
+
+// Rutas
+const viewsRoutes = require("./routes/viewsRoutes");
+const favoritesRoutes = require("./routes/favoritesRoutes");
+// const filmsRoutes = require("./routes/filmsRoutes");    
+// const userRoutes = require("./routes/userRoutes");      
+// const authRoutes = require("./routes/authRoutes");     
+
+// API
 app.use('/', viewsRoutes);
 app.use('/', favoritesRoutes); 
+// app.use('/', filmsRoutes);    
+// app.use('/', userRoutes);     
+// app.use('/', authRoutes);    
 
 // Manejo de rutas no encontradas
 app.use((req, res) => {
@@ -63,6 +64,5 @@ app.listen(port, () => {
   );
 });
 
-connectDB(); // Conexión Mongo
-
-module.exports = app; // Exportar la app para usarla en tests
+connectDB();
+module.exports = app;

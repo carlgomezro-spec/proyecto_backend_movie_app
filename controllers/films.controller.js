@@ -1,5 +1,5 @@
 // controllers/movieController.js
-const Movie = require("../models/Movie");
+const Movie = require('../models/films.model');  // ← Usar Movie como alias
 
 const OMDB_API_KEY = process.env.OMDB_API_KEY;
 
