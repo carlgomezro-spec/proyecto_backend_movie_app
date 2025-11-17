@@ -1,5 +1,5 @@
 const queries = require("../queries/users.queries");
-const { executeQuery } = require("../config/db_sql")
+const executeQuery = require("../config/db_sql.js");
 
 const createUser = async (name, surname, email, password, role = 'user') => {
     try {
