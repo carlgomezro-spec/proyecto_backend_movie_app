@@ -1,4 +1,4 @@
-const pool = require('../config/db_sql');
+// const pool  = require('../config/db_sql');
 const Film = require('../models/films.model');
 
 // [GET] /favorites - Vista web de favoritos
