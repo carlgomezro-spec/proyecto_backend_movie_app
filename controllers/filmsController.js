@@ -4,7 +4,7 @@ require('dotenv').config(); //para cargar
 const fetchFilm = require('../utils/fetchFilms');
 
 
-// [GET] /api/film/:title  // Buscar película por título (Usuario y Admin)
+// [GET] /api/film/:title  // Buscar película 
 async function getMovieByTitle(req, res) {
   const title = req.params.title;
 
