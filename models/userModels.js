@@ -1,5 +1,7 @@
 const pool = require('../config/db_sql'); // Conexión a PostgreSQL
+
 // ================================================== FUNCIONES PARA GOOGLE OAUTH ==================================================
+
 // GET /api/user -> Buscar usuario por email (para Google OAuth)
 const findUserByEmail = async (email) => {
     let client, result;
@@ -19,14 +21,15 @@ const findUserByEmail = async (email) => {
     }
     return result;
 };
+
 // POST /api/user -> Crear usuario (para Google OAuth)
 const createUser = async (name, email, role, password = null) => {
     let client, result;
     try {
         client = await pool.connect();
         const query = `
-            INSERT INTO users (name, email, role, password, auth_method, google_id)
-            VALUES ($1, $2, $3, $4, 'google', $5)
+            INSERT INTO users (name, email, role, password, auth_method, google_id) 
+            VALUES ($1, $2, $3, $4, 'google', $5) 
             RETURNING *
         `;
         // Generar un google_id temporal
@@ -45,6 +48,7 @@ const createUser = async (name, email, role, password = null) => {
     }
     return result;
 };
+
 // ================================================== FUNCIONES DE USUARIOS ==================================================
 // GET /api/user -> Obtener usuario por id
 const getUserById = async (id) => {
@@ -72,7 +76,7 @@ const updateUserById = async (id, userData) => {
     try {
         client = await pool.connect();
         const data = await client.query(
-            'UPDATE users SET name = $1, email = $2, role = $3 WHERE id = $4',
+            'UPDATE users SET name = $1, email = $2, role = $3 WHERE id = $4', 
             [name, email, role, id]
         );
         result = data.rowCount;
@@ -126,6 +130,7 @@ const getAllUsers = async () => {
     }
     return result;
 };
+
 // ================================================== EXPORTAR TODAS LAS FUNCIONES ==================================================
 module.exports = {
     findUserByEmail,
