@@ -1,5 +1,6 @@
-const pool = require('../config/db_sql');
+// const pool  = require('../config/db_sql');
 const Film = require('../models/films.model');
+
 
 // [GET] /favorites - Vista web de favoritos
 const getFavoritesView = async (req, res) => {
@@ -30,9 +31,8 @@ const getFavoritesView = async (req, res) => {
             message: 'Error al cargar favoritos'
         });
     }
-};
 
-// [GET] /api/favorites - Obtener películas favoritas del usuario (API)
+// [GET] /api/favorites - Películas favoritas (API)
 
 const getFavorites = async (req, res) => {
     try {
