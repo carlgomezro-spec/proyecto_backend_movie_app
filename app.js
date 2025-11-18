@@ -1,7 +1,15 @@
 const express = require("express");
 const cowsay = require("cowsay");
+
+const connectDB = require("./config/db_mongo");
+const cookieParser = require('cookie-parser');
+// Leer fichero .env
+require('dotenv').config();
+
 const cookieParser = require('cookie-parser');
 
+
+const connectDB = require("./config/db_mongo");
 const connectDB = require("./config/db_mongo");
 const Movie = require("./models/films.model");  
 
@@ -16,14 +24,21 @@ const port = 3000; // Puerto de pruebas
  
 const path = require("path");
 
-// Leer fichero .env
-require('dotenv').config();
 
 // Configuración PUG 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 // Middlewares
+// const error404 = require("./middlewares/error404");
+// Morgan
+// const morgan = require("./middlewares/morgan");
+
+// Configuración del logger con Morgan
+// app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
+
+
+
 app.use(express.json());
 app.use(express.static('public')); // Para servir archivos estáticos del front CSS, JS, assets
 app.use(cookieParser());
