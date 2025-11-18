@@ -11,6 +11,7 @@ const favoritesRoutes = require("./routes/favoritesRoutes");
 const userRoutes = require("./routes/userRoutes");
 const filmsRoutes = require("./routes/filmsRoutes");    
 
+
 const app = express(); // Creando el servidor
 const port = 3000; // Puerto de pruebas
  
@@ -38,6 +39,7 @@ app.use('/', viewsRoutes);
 app.use('/', favoritesRoutes); 
 app.use('/', userRoutes);  
 app.use('/', filmsRoutes);    
+
 
 // Manejo de rutas no encontradas
 app.use((req, res) => {
