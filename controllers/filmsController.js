@@ -1,8 +1,7 @@
 // controllers/movieController.js
 const Film = require('../models/films.model');  // ← Usar Film como alias
 require('dotenv').config(); //para cargar
-
-const { fetchFilm } = require('../utils/fetchFilms');
+const fetchFilm = require('../utils/fetchFilms');
 
 
 // [GET] /api/film/:title  // Buscar película por título (Usuario y Admin)
@@ -40,7 +39,7 @@ async function getMovieByTitle(req, res) {
 
 
 // [POST] /api/film Crear película (ADMIN)
-function createFilm(req, res) {
+function createMovie(req, res) {
   try {
     const filmTitle = req.body.Title || req.body.title;
     res.status(200).json({ message: `Se ha guardado ${filmTitle}` });
@@ -88,7 +87,7 @@ function deleteMovie(req, res) {
 
 module.exports = {
   getMovieByTitle,
-  createFilm,
+  createMovie,
   updateMovie,
   deleteMovie,
 };

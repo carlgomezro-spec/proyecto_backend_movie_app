@@ -32,14 +32,14 @@ app.use(express.static('public'));
 // Rutas
 const viewsRoutes = require("./routes/viewsRoutes");
 const favoritesRoutes = require("./routes/favoritesRoutes");
-// const filmsRoutes = require("./routes/filmsRoutes");    
+const filmsRoutes = require("./routes/filmsRoutes");    
 // const userRoutes = require("./routes/userRoutes");      
 // const authRoutes = require("./routes/authRoutes");     
 
 // API
 app.use('/', viewsRoutes);
 app.use('/', favoritesRoutes); 
-// app.use('/', filmsRoutes);    
+app.use('/', filmsRoutes);    
 // app.use('/', userRoutes);     
 // app.use('/', authRoutes);    
 
