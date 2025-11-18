@@ -1,7 +1,14 @@
 doctype html
 html
   head
-    title Dashboard
+    title Panel de control
   body
-    h1 Bienvenido
-    p Usuario ID: #{userId}
+    include ./header.pug
+    main 
+        h1 Bienvenido #{user.name}
+        a(href="/search") Buscar películas
+        a(href="/movies") Mis películas
+        form(action="/api/logout" method="POST")
+        button(type="submit") Salir
+    include ./footer.pug
+    script(src="/js/script.js")
