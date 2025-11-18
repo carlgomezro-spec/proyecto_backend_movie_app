@@ -1,10 +1,10 @@
 const express = require("express");
 const cowsay = require("cowsay");
+// Leer fichero .env
+require('dotenv').config();
 
 const connectDB = require("./config/db_mongo");
 const cookieParser = require('cookie-parser');
-// Leer fichero .env
-require('dotenv').config();
 
 const Movie = require("./models/films.model");  
 
