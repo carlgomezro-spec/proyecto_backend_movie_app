@@ -5,11 +5,21 @@ const cookieParser = require('cookie-parser');
 const connectDB = require("./config/db_mongo");
 const Movie = require("./models/films.model");  
 
-const app = express();
-const port = 3000;
+// Importar rutas
+const viewsRoutes = require("./routes/viewsRoutes");
+const favoritesRoutes = require("./routes/favoritesRoutes"); 
+const userRoutes = require("./routes/userRoutes");
 
-require("dotenv").config();
+const app = express(); // Creando el servidor
+const port = 3000; // Puerto de pruebas
+ 
+const path = require("path");
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
+// Leer fichero .env
+require('dotenv').config();
 
 // Habilitar recepción de JSON por mi backend
 // Parsear el body entrante a JSON
@@ -39,6 +49,7 @@ const filmsRoutes = require("./routes/filmsRoutes");
 // API
 app.use('/', viewsRoutes);
 app.use('/', favoritesRoutes); 
+app.use('/', userRoutes);  
 app.use('/', filmsRoutes);    
 // app.use('/', userRoutes);     
 // app.use('/', authRoutes);    
