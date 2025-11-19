@@ -1,49 +1,54 @@
-// services/movieService.js
+const Film = require('../models/films.model');
 const fetchFilm = require('../utils/fetchFilms');
-const Movie = require('../models/films.model');
 
-const getAllMovies = async () => {
-  return await Movie.find({});
-};
-
-// Buscar película por título (API externa + MongoDB)
+// Buscar una película por título
 const getMovieByTitle = async (title) => {
-  try {
-    const filmFromAPI = await fetchFilm(title);
-    if (filmFromAPI) return filmFromAPI;
-  } catch (err) {
-    // Si falla la API, seguimos buscando en la base de datos
-  }
+    // Buscar primero en OMDB
+    const film = await fetchFilm.fetchOneFilm(title);
+    if (film) return film;
 
-  return await Movie.findOne({ title: new RegExp(`^${title}$`, 'i') });
+    // Si no está en OMDB, buscar en MongoDB
+    const localFilm = await Film.findOne({ Title: new RegExp(`^${title}$`, 'i') });
+    if (localFilm) return localFilm;
+
+    throw new Error('Film not found in OMDB or local database');
 };
 
-// Buscar película por ID (solo MongoDB)
-const getMovieById = async (id) => {
-  return await Movie.findById(id);
+// Buscar todas las películas por título (similar a getMovieByTitle)
+const getAllMovies = async (title) => {
+    const films = await fetchFilm.fetchAllFilms(title);
+    if (films) return films;
+
+    const localFilm = await Film.findOne({ Title: new RegExp(`^${title}$`, 'i') });
+    if (localFilm) return localFilm;
+
+    throw new Error('Film not found in OMDB or local database');
 };
 
-// Crear película (solo MongoDB, admin)
-const createMovie = async (movieData) => {
-  const movie = new Movie(movieData);
-  return await movie.save();
+// Crear película (solo admin)
+const createMovie = async (filmData) => {
+    // Aquí podrías guardar en MongoDB si lo quieres
+    const filmTitle = filmData.Title || filmData.title;
+    // Simulación de guardado
+    return { message: `Se ha guardado ${filmTitle}` };
 };
 
-// Editar película (solo MongoDB, admin)
-const updateMovie = async (id, movieData) => {
-  return await Movie.findByIdAndUpdate(id, movieData, { new: true });
+// Editar película (solo admin)
+const updateMovie = async (filmData) => {
+    const { id, Title, title } = filmData;
+    const filmTitle = Title || title;
+    return { id, message: `Se ha actualizado ${filmTitle}` };
 };
 
-// Eliminar película (solo MongoDB, admin)
-const deleteMovie = async (id) => {
-  return await Movie.findByIdAndDelete(id);
+// Eliminar película (solo admin)
+const deleteMovie = async (title) => {
+    return { title, message: `Se ha borrado la película con título: ${title}` };
 };
 
 module.exports = {
-  getAllMovies,
-  getMovieByTitle,
-  getMovieById,
-  createMovie,
-  updateMovie,
-  deleteMovie,
+    getMovieByTitle,
+    getAllMovies,
+    createMovie,
+    updateMovie,
+    deleteMovie
 };

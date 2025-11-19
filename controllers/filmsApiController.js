@@ -1,6 +1,8 @@
 const Film = require('../models/films.model');  //esto me trae el modelo especial de Mongoose para poder interactuar con mi colección
 require('dotenv').config(); //para cargar
-const fetchFilm = require('../utils/fetchFilms');
+// const fetchFilm = require('../utils/fetchFilms');
+const filmsService = require('../services/filmsServices');
+
 
 
 // [GET] /api/film/:title  // Buscar una película por título en detalle (Usuario y Admin)

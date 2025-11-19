@@ -1,4 +1,5 @@
-const authModel = require("../models/authModels");
+//const authModel = require("../models/authModels");
+const authService = require("../services/authServices");
 
 // POST http://localhost:3000/api/signup
 const createUser = async (req, res) => {

@@ -1,16 +1,18 @@
-extends ./layout.pug
+//- [GET] /profile : Mostrará datos del usuario o administrador logueado. Estos datos podrán ser editados desde aquí.
+extends dashboard
 
 block head
-  title Perfil
+    title Perfil
 
 block content
-  h1 Perfil de #{user.name}
+    h1 Perfil de #{user ? user.name : 'Invitado'}
 
-  form(action="/api/user" method="POST")
-    label(for="name") Nombre:
-    input(type="text" name="name" value=user.name)
+    form(action="/api/user" method="POST")
+        label(for="name") Nombre:
+        input(type="text" name="name" value=(user ? user.name : ''))
 
-    label(for="email") Email:
-    input(type="email" name="email" value=user.email)
+        label(for="email") Email:
+        input(type="email" name="email" value=(user ? user.email : ''))
 
-    button(type="submit") Guardar cambios
+
+        button(type="submit") Guardar cambios 

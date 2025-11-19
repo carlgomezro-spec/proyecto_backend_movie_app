@@ -1,4 +1,6 @@
-const Film = require('../models/films.model');
+//const Film = require('../models/films.model');
+const viewsService = require('../services/viewsServices');
+
 
 // Controlador "Página de inicio" ➡️ "homeController"
 const homeController = async (req, res) => {

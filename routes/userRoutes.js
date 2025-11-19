@@ -10,6 +10,9 @@ const userController = require('../controllers/userControllers');
 router.get('/profile', userController.renderProfile); // Vista del perfil
 //[GET] http://localhost:3000/user
 router.get('/user', userController.renderUsersList); // Vista lista de usuarios (admin)
+// GET /login → formulario
+router.get("/login", userController.renderLogin);
+
 
 // -------------API--------------
 //[GET] http://localhost:3000/api/user Obtener datos del perfil del usuario o administrador

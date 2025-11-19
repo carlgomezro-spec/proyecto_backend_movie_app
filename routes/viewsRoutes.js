@@ -5,9 +5,9 @@ const { homeController, dashboardController } = require('../controllers/viewsCon
 const router = express.Router();
 
 // [GET] http://localhost:3000/api - Página de inicio
-router.get('/api/home', homeController);
+router.get('/search', homeController);
 
-// [GET] http://localhost:3000/api/dashboard - Panel de control
+// [GET] http://localhost:3000/dashboard - Panel de control
 router.get('/dashboard', dashboardController);
 
 

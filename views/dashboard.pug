@@ -1,12 +1,14 @@
 doctype html
 html
   head
-    title Panel de control
+    block head
+      title Panel de control
   body
     include ./header.pug
     main 
+      
         h1 Bienvenido #{user.name}
-        a(href="/api/home") Buscar películas
+        a(href="/search") Buscar películas
         a(href="/api/movie") Mis películas
         //- form(action="/api/logout" method="POST")
         //- button(type="submit") Salir
