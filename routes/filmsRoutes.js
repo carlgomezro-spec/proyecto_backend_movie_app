@@ -7,13 +7,12 @@ const Film = require("../models/films.model"); //esto me trae el modelo especial
 
 //------------- WEB -------------
 
-
-// GET ALL FILMS /api/movie/:title
+// GET ALL FILMS /home/movie/:title
 router.get("/search/:title", movieWeb.getAllMovies);
 
 // -------------API--------------
 
-// GET /api/movie/:title
+// GET /api/movie/:title en detalle
 router.get("/api/movie/:title", movieAPI.getMovieByTitle);
 
 // POST /api/movie
