@@ -28,7 +28,7 @@ const startBrowser = async (url) => {
         console.log("Abriendo browser...");
         // Inicializar una instancia del navegador (browser)
         const browser = await puppeteer.launch({
-            headless: false
+            headless: true
         });
         // Abre nueva pestaña en el navegador con newPage() con la url que le hemos específicado con page.goto()
         const page = await browser.newPage();
