@@ -6,13 +6,17 @@ require('dotenv').config();
 const connectDB = require("./config/db_mongo");
 const cookieParser = require('cookie-parser');
 
+// Importar controllers/scraperController
+const scraperController = require('./controllers/scraperController');
+
 const Movie = require("./models/films.model");  
+
 
 // Importar rutas
 const viewsRoutes = require("./routes/viewsRoutes");
 const favoritesRoutes = require("./routes/favoritesRoutes"); 
 const userRoutes = require("./routes/userRoutes");
-const filmsRoutes = require("./routes/filmsRoutes");    
+const filmsRoutes = require("./routes/filmsRoutes"); 
 
 const app = express(); // Creando el servidor
 const port = 3000; // Puerto de pruebas
