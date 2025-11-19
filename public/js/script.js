@@ -20,9 +20,7 @@ document.getElementById("searchButton").addEventListener("click", async () => {
                 <h2>${movie.Title}</h2>
                 <img src="${movie.Poster !== "N/A" ? movie.Poster : "/img/default.png"}" alt="${movie.Title}" class="img_logo">
                 <p><strong>Año:</strong> ${movie.Year || "Desconocido"}</p>
-                <p><strong>Director:</strong> ${movie.Director || "Desconocido"}</p>
-                <p><strong>Género:</strong> ${movie.Genre || "Desconocido"}</p>
-                <p><strong>Duración:</strong> ${movie.Runtime || "Desconocido"}</p>
+                <a href="detalle.html?id=${movie.imdbID}" class="btn-detalle">Ver detalle</a>
             </article>
         `).join("");
 

@@ -5,9 +5,63 @@ body {
     padding: 0;
 }
 
-.img_logo {
-    width: 300px;
-    height: auto;
+.movie-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Efecto hover del contenedor de peliculas */
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Título */
+.movie-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Imagen */
+.movie-card .img_logo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    max-height: 320px; /* límite opcional */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Año */
+.movie-card p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Botón */
+.btn-detalle {
+    margin-top: auto;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #ff6b6b;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.25s ease;
+}
+
+.btn-detalle:hover {
+    background: #ff4757;
 }
 
 
