@@ -1,0 +1,507 @@
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #dedede;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+    background: #111;
+    padding: 10px 20px;
+}
+
+/* === NAVBAR === */
+nav {
+    display: flex; /* layout desktop */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Lista de links */
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Items de la lista */
+nav li {
+    display: inline-block;
+}
+
+/* Links */
+nav a {
+    color: #ffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover {
+    background: #333;
+}
+/* Logo dentro de la navbar */
+.logo img {
+    height: 40px; /* ajusta al tamaño que quieras */
+    width: auto;
+}
+
+
+/* Botón de logout */
+.logout-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: none;
+}
+.logout-button:hover {
+     background: #333;
+}
+
+/* === BOTÓN HAMBURGUESA === */
+.menu-toggle {
+    display: none; /* oculto por defecto en desktop */
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* === CONTENEDOR GENERAL === */
+.auth-container {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    color: #fff;
+    font-family: "Inter", sans-serif;
+}
+
+/* === TABS === */
+.auth-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px 0;
+    background: #333;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 15px;
+    transition: background 0.3s ease;
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+.tab-button:last-child {
+    margin-right: 0;
+}
+
+.tab-button.active {
+    background: #e50914; 
+}
+
+/* === CONTENIDO DE LOS FORMULARIOS === */
+.tab-content {
+    display: block;
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* === INPUTS === */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    outline: none;
+    background: #222;
+    color: #fff;
+    transition: border 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #e50914;
+}
+
+/* === BOTÓN PRINCIPAL === */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #bb0810;
+}
+
+/* === SEPARADOR === */
+.auth-separator {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.auth-separator span {
+    background: #1a1a1a;
+    padding: 0 10px;
+    z-index: 2;
+    position: relative;
+}
+
+.auth-separator::before {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background: #444;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+}
+
+/* === BOTÓN DE GOOGLE === */
+.social-auth {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-google {
+   color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.btn-google:hover {
+    background: #afafaf;
+}
+
+.btn-google img {
+    vertical-align: middle;
+}
+
+/* Contenedor de tarjetas */
+.movie-container {
+    display: flex;           /* filas de tarjetas */
+    flex-wrap: wrap;         /* bajan a otra fila si no caben */
+    justify-content: center; /* centrado horizontal */
+    gap: 20px;               /* separación entre tarjetas */
+    padding: 20px;
+}
+
+/* Tarjeta individual */
+.movie-card {
+    background: #1a1a1a;;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    max-width: 250px; /* ancho máximo */
+}
+
+/* Efecto hover */
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Imagen */
+.movie-card .img_logo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Botón detalle */
+.btn-detalle {
+    margin-top: auto;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #e50914;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.25s ease;
+}
+
+.btn-detalle:hover {
+    background: #bb0810;
+}
+
+h1 {
+    padding: 15px;
+    position: relative;
+    text-align: center;
+}
+
+/* === DETALLE DE PELÍCULA === */
+.movie-detail-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color:white;
+}
+
+.detail-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    max-width: 900px;
+}
+
+.detail-card .left {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.detail-card .left img.poster {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.detail-card .left .add-fav {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4c4c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.detail-card .left .add-fav:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255,76,76,0.4);
+}
+
+.detail-card .right {
+    flex: 2 1 500px;
+}
+
+.detail-card .right .data-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.detail-card .right .data-list li {
+    margin-bottom: 8px;
+}
+
+span.genre {
+    display: inline-block;
+    background: #333;
+    border-radius: 8px;
+    padding: 3px 8px;
+    margin: 2px;
+    font-size: 0.85rem;
+}
+
+span.rating {
+    background: #ff4c4c;
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+ul.cast li,
+ul.opinions li {
+    margin-bottom: 5px;
+}
+
+ul.opinions li {
+    padding-left: 10px;
+    border-left: 2px solid #ff4c4c;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 20px;
+    color: #ff4c4c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.25s ease;
+}
+
+/* === RESPONSIVE PARA DETALLE DE PELÍCULA === */
+@media (max-width: 768px) {
+    .detail-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-card .right {
+        flex: 1 1 100%;
+    }
+}
+
+
+
+/* Enlaces estilo botón */
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+}
+.btn-link {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 5px;
+    background-color: #e50914;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-link:hover {
+    background-color: #bb0810;
+    transform: translateY(-2px);
+}
+
+
+.search-container {
+    display: flex;              /* Activa flexbox */
+    justify-content: center;    /* Centra horizontalmente */
+    align-items: center;        /* Centra verticalmente */
+    gap: 10px;                  /* Espacio entre input y botón */
+    margin: 20px 0;             /* Separación superior e inferior */
+}
+
+.search-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    width: 250px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #e50914;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-container button:hover {
+    background-color: #bb0810;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 15px;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    /* Tarjetas de películas */
+    .movie-container {
+        flex-direction: column;
+        align-items: center; /* centra las tarjetas */
+    }
+    
+    .movie-card {
+        width: 90%; /* opcional: tarjetas más grandes y centradas */
+        max-width: none;
+    }
+
+    /* NAVBAR RESPONSIVO */
+    nav .nav-links {
+        display: none; /* ocultar links por defecto en móvil */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* debajo del header */
+        right: 10px;
+        background-color: #111;
+        border-radius: 8px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    nav .nav-links.active {
+        display: flex; /* mostrar cuando se haga click en hamburguesa */
+    }
+
+    .menu-toggle {
+        display: block; /* mostrar botón hamburguesa en móvil */
+    }
+}
+
+
