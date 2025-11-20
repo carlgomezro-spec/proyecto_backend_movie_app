@@ -50,13 +50,13 @@ const objectSchema = {
     },
     Ratings: [
         {
-            type: {
+            Type: {
                 type: String, 
                 required: true
             },
             Source: {
                 type: String, 
-                required: true
+                required: false
             },
             Value: {
                 type: String,
