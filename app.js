@@ -5,7 +5,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const path = require("path");
-const jwt = require('jsonwebtoken'); 
+const jwt = require('jsonwebtoken');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger'); 
 
 require('./config/googleAuthConfig'); 
 require('dotenv').config();
@@ -19,6 +21,9 @@ const port = 3000;
 // ========================================================== CONFIGURACIÓN ==========================================================
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
+
+// ========================================================== DOC-SWAGGER ==========================================================
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // ========================================================== MIDDLEWARES ==========================================================
 app.use(express.urlencoded({ extended: true }));
@@ -50,9 +55,6 @@ app.use((req, res, next) => {
     }
     next();
 });
-
-// Morgan middleware (si lo tienes)
-// app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 
 // ========================================================== RUTAS ==========================================================
 // Importar rutas
@@ -89,7 +91,7 @@ connectDB().then(() => {
   app.listen(port, () => {
     console.log(
       cowsay.say({
-        text: `Movie App funcionando en http://localhost:${port}`,
+        text: `Movie App funcionando en http://localhost:${port}/dashboard`,
         f: "owl", 
       })
     );
