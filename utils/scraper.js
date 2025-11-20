@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
-
 const fs = require('fs');
+const Film = require("../models/films.model");
 
 // Función para extraer información de cada rating
 const extractRating = async (url, browser) => {
@@ -14,7 +14,7 @@ const extractRating = async (url, browser) => {
 
         ratingData['Type'] = await page.$eval(".rating-title", type => type.innerHTML);
         ratingData['Value'] = await page.$eval(".stareval-note", value => value.innerHTML);
-        
+
         // Devuelve los datos
         return ratingData;
     }   
@@ -26,6 +26,7 @@ const extractRating = async (url, browser) => {
 
 // Iniciar todo el scraping
 const startBrowser = async (url) => {
+    // Ratings
     try {
         // Creamos array vacío para almacenar la información obtenida del scraping
         const scrapedData = [];
@@ -40,7 +41,7 @@ const startBrowser = async (url) => {
         console.log(`Navegando a ${url}`);
 
         // Lista de nodos -> convertirlo a una lista de href -> array de links
-        const tmpurls = await page.$$eval("div> a", link => link.map(a => a.href))
+        const tmpurls = await page.$$eval("div > a", link => link.map(a => a.href))
 
         // Filtro para que sólo devuelva enlaces con /pelicula-
         const urls = await tmpurls.filter(link => link.includes('/pelicula-'))
@@ -57,20 +58,19 @@ const startBrowser = async (url) => {
             scrapedData.push(ratingMovie)
        }
 
-        console.log(scrapedData, "Lo que devuelve mi función scraper", scrapedData.length) 
-
-        // Cerramos el browser (navegador) con el método browser.close
-        await browser.close();
-
+        console.log(scrapedData, "Lo que devuelve mi función scraper", scrapedData.length);
+       await browser.close();
+       
         // Escribimos los datos en un archivo .json
-        fs.writeFile('scrapedData.json', JSON.stringify(scrapedData, null, 2), (err) => {
+        fs.writeFile('scrapedData.json', JSON.stringify(scrapedData,null, 2), (err) => {
             if (err) throw err;
             console.log('Datos guardados en scrapedData.json');
         });
+        
         return scrapedData;
-    } 
+    }
     catch (err) {
-        console.log("Error:", err);
+    console.log("Error:", err);
     }
 }
 module.exports = {
@@ -79,4 +79,6 @@ module.exports = {
 
 startBrowser("https://www.sensacine.com/peliculas/").then(data => {
     console.log(data);
+    Film.insertMany(data);
+    console.log("Ratings guardados en la BBDD")
 })

@@ -1,0 +1,72 @@
+[
+  {
+    "pressOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    },
+    "userOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    }
+  },
+  {
+    "pressOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    },
+    "userOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    }
+  },
+  {
+    "pressOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    },
+    "userOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    }
+  },
+  {
+    "pressOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    },
+    "userOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    }
+  },
+  {
+    "pressOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    },
+    "userOpinion": {
+      "error": {
+        "name": "ProtocolError",
+        "message": "Protocol error (Page.navigate): Invalid parameters Failed to deserialize params.url - BINDINGS: mandatory field missing at position 50"
+      }
+    }
+  }
+]
