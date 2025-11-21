@@ -51,7 +51,7 @@ const startBrowser = async (url) => {
 
         console.log("url capturadas", urls);
         // Me quedo con los 20 primeros ratings
-        const urls2 = urls.slice(0, 5);
+        const urls2 = urls.slice(0, 1);
 
         console.log(`${urls2.length} links encontrados`);
         console.log(urls2);
@@ -80,17 +80,19 @@ module.exports = {
     startBrowser,
 }
 
-startBrowser("https://www.sensacine.com/peliculas/").then(async data => {
+startBrowser("https://www.sensacine.com/peliculas/").then(data => {
     console.log(data);
     console.log("Insertando en MongoDB...")
-    for (const rating of data) {
-        await Film.findOneAndUpdate(
+      for (const rating of data) {
+        Film.findOneAndUpdate(
             { Title: rating.Title },
-            { $push: { Ratings: {
-                Type: rating.Type,
-                Value: rating.Value
-            }}},
-            { new: true, upsert: true }
+            { $push: { Ratings: 
+                {
+                    Type: rating.Type,
+                    Value: rating.Value
+                }
+            }},
+            { new: true }
         );
     }
     console.log("Ratings guardados en la BBDD");

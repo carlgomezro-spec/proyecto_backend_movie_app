@@ -52,10 +52,6 @@ const objectSchema = {
         {
             Type: {
                 type: String, 
-                required: true
-            },
-            Source: {
-                type: String, 
                 required: false
             },
             Value: {
@@ -80,21 +76,21 @@ const Film = mongoose.model("Films", filmsSchema);
 
 // Documento de prueba
  
-const film1 = new Film({
-  Title: "Todos los lados de la cama",
-  Year: 2025,
-  Rated: "PG-13",
-  Released: "05 May 2017",
-  Runtime: "136 min",
-  Genre: "Comedia",
-  Director: "Samantha López",
-  Actors: "Chris Pratt, Zoe Saldaña, Dave Bautista",
-  Plot: "Tras décadas sin verse, Javier y Carlota montan en cólera cuando descubren que sus hijos Óscar y Julia planean casarse.",
-  Poster: "https://es.web.img3.acsta.net/c_310_420/img/80/43/8043593f13b66a6dcfc29eb2108d2171.jpg",
-  imdbID: "tt32760231",
-  Ratings: [],
-  Opinions: [] // vacío inicialmente
-});
+// const film1 = new Film({
+//   Title: "Calígula",
+//   Year: 1982,
+//   Rated: "PG-18",
+//   Released: "15 feb 19982",
+//   Runtime: "136 min",
+//   Genre: "Comedia",
+//   Director: "Tinto Brass",
+//   Actors: "Malcolm McDowell, Helen Mirren, Peter O'Toole",
+//   Plot: "Película que cuenta con el sello de la revista erótica 'Penthouse', un drama sobre la vida de Calígula, el que fuera emperador de Roma",
+//   Poster: "https://es.web.img2.acsta.net/c_310_420/medias/nmedia/18/83/26/26/20533346.jpg",
+//   imdbID: "tt0080491",
+//   Ratings: [],
+//   Opinions: [] // vacío inicialmente
+// });
 // film1.save()
 // .then((data) => console.log(data))
 // .catch(error => console.log(error))
