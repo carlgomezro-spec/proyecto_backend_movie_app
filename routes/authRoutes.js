@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authController = require("../controllers/authController");
 const passport = require('passport');
+const { validateCreateUser } = require('../validators/userValidator');
 
 /**
  * @swagger
@@ -86,7 +87,7 @@ const passport = require('passport');
  */
 
 //[POST] http://localhost:3000/api/signup Registrar usuario en la aplicación
-router.post('/api/signup', authController.createUser);
+router.post('/api/signup', validateCreateUser ,authController.createUser);
 
 /**
  * @swagger
