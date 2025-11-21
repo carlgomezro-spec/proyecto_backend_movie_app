@@ -1,5 +1,7 @@
 const puppeteer = require("puppeteer");
 const fs = require('fs');
+require('mongoose');
+require('../config/db_mongo');
 const Film = require("../models/films.model");
 
 // Función para extraer información de cada rating
@@ -12,6 +14,7 @@ const extractRating = async (url, browser) => {
         const page = await browser.newPage();
         await page.goto(url);
 
+        ratingData['Title'] = await page.$eval(".titlebar-link", title => title.innerHTML.trim());
         ratingData['Type'] = await page.$eval(".rating-title", type => type.innerHTML);
         ratingData['Value'] = await page.$eval(".stareval-note", value => value.innerHTML);
 
@@ -77,8 +80,18 @@ module.exports = {
     startBrowser,
 }
 
-startBrowser("https://www.sensacine.com/peliculas/").then(data => {
+startBrowser("https://www.sensacine.com/peliculas/").then(async data => {
     console.log(data);
-    Film.insertMany(data);
-    console.log("Ratings guardados en la BBDD")
-})
+    console.log("Insertando en MongoDB...")
+    for (const rating of data) {
+        await Film.findOneAndUpdate(
+            { Title: rating.Title },
+            { $push: { Ratings: {
+                Type: rating.Type,
+                Value: rating.Value
+            }}},
+            { new: true, upsert: true }
+        );
+    }
+    console.log("Ratings guardados en la BBDD");
+});

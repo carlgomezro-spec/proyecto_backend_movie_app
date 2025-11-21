@@ -6,8 +6,7 @@ require('../config/db_mongo') // Conexión a BDD MongoDB
 const objectSchema = {
     Title: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     Year: {
         type: Number,
@@ -82,22 +81,22 @@ const Film = mongoose.model("Films", filmsSchema);
 // Documento de prueba
  
 const film1 = new Film({
-  Title: "Guardians of the Galaxy Vol. 2",
-  Year: 2017,
+  Title: "Todos los lados de la cama",
+  Year: 2025,
   Rated: "PG-13",
   Released: "05 May 2017",
   Runtime: "136 min",
-  Genre: "Action, Adventure, Comedy",
-  Director: "James Gunn",
+  Genre: "Comedia",
+  Director: "Samantha López",
   Actors: "Chris Pratt, Zoe Saldaña, Dave Bautista",
-  Plot: "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father, the ambitious celestial being Ego.",
-  Poster: "https://m.media-amazon.com/images/M/MV5BNWE5MGI3MDctMmU5Ni00YzI2LWEzMTQtZGIyZDA5MzQzNDBhXkEyXkFqcGc@._V1_SX300.jpg",
-  imdbID: "tt3896198",
+  Plot: "Tras décadas sin verse, Javier y Carlota montan en cólera cuando descubren que sus hijos Óscar y Julia planean casarse.",
+  Poster: "https://es.web.img3.acsta.net/c_310_420/img/80/43/8043593f13b66a6dcfc29eb2108d2171.jpg",
+  imdbID: "tt32760231",
   Ratings: [],
   Opinions: [] // vacío inicialmente
 });
-film1.save()
-.then((data) => console.log(data))
-.catch(error => console.log(error))
+// film1.save()
+// .then((data) => console.log(data))
+// .catch(error => console.log(error))
 
 module.exports = Film;
