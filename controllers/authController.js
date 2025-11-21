@@ -1,4 +1,6 @@
 const authService = require('../services/authServices');
+const { validationResult } = require('express-validator');
+
 
 /**
  * Almacén temporal en memoria para tokens de recuperación de contraseña
@@ -25,6 +27,13 @@ const resetTokens = {};
  */
 async function createUser(req, res) {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+            success: false,
+            errors: errors.array(),
+            });
+        }
         await authService.createUser(req.body.username, req.body.email, req.body.password);
         res.redirect('/login');
     } catch (error) {

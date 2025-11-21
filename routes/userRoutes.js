@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
-
 //[GET] http://localhost:3000/profile 
 router.get('/profile', userController.renderProfile); // Vista del perfil
 

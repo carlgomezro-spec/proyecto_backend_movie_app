@@ -1,5 +1,6 @@
 const express = require("express");
 const cowsay = require("cowsay");
+
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
@@ -10,6 +11,7 @@ const swaggerSpec = require('./config/swagger');
 
 require('./config/googleAuthConfig'); 
 require('dotenv').config();
+
 const connectDB = require("./config/db_mongo");
 
 // ========================================================== INICIALIZACIÓN ==========================================================
