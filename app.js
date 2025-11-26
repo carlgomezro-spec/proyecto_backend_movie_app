@@ -41,18 +41,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Middleware para JWT (AÑADIR ESTO)
-app.use((req, res, next) => {
-    const token = req.cookies.token;
-    if (token) {
-        try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            req.user = decoded;
-        } catch (error) {
-            res.clearCookie('token');
-        }
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     const token = req.cookies.token;
+//     if (token) {
+//         try {
+//             const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//             req.user = decoded;
+//         } catch (error) {
+//             res.clearCookie('token');
+//         }
+//     }
+//     next();
+// });
 
 // ========================================================== RUTAS ==========================================================
 // Importar rutas
