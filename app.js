@@ -15,7 +15,10 @@ const connectDB = require("./config/db_mongo");
 
 // ========================================================== INICIALIZACIÓN ==========================================================
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT; // SIN 3000 por defecto en producción
+app.listen(port, () => {
+  console.log(`Servidor funcionando en puerto ${port}`);
+});
 
 // ========================================================== CONFIGURACIÓN ==========================================================
 app.set("view engine", "pug");
